@@ -63,8 +63,6 @@ Enemy.prototype.randomY = function() {
     return this.enemyY[Math.floor(Math.random() * this.enemyY.length)];
 }
 
-
-
 /* PLAYER CLASS SECTION */
 // Now write your own player class
 // This class requires an update(), render() and
