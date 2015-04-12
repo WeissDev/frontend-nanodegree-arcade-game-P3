@@ -88,7 +88,7 @@ Player.prototype.update = function() {
             // Do Bug and Sprite have same Y Position?
             if (bug.y == sprite.y) {
                 // Do they have same X Position?
-                if (bug.x >= player.x - 30 && bug.x <= player.x + 30) {
+                if (bug.x >= sprite.x - 30 && bug.x <= sprite.x + 30) {
                     // If yes, call reset Method on player
                     sprite.reset();
                 }
@@ -114,7 +114,7 @@ Player.prototype.handleInput = function(key) {
         this.y -= tileHeight;
     } else if (key === 'right' && this.x < rightBorder) {
         this.x += tileWidth;
-    } else if (key === 'down' && this.y > downBorder) {
+    } else if (key === 'down' && this.y < downBorder) {
         this.y += tileHeight;
     }
 }
