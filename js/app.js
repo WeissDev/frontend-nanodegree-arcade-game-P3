@@ -5,11 +5,11 @@ var tileHeight = 80;
 var leftBorder = 0;
 var rightBorder = 400;
 var upBorder = 80;
-var downBorder = 400;
+var downBorder = 380;
 
 /* ENEMY CLASS SECTION */
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function () {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -24,24 +24,24 @@ var Enemy = function() {
 
     // Set Enemy inital Location
     this.reset();
-}
+};
 
-Enemy.prototype.reset = function() {
+Enemy.prototype.reset = function () {
     this.x = this.initialX;
     this.y = this.randomY();
 
     // Assign random speed value to Enemy
     this.speed = this.randomSpeed();
-}
+};
 
-Enemy.prototype.randomSpeed = function() {
+Enemy.prototype.randomSpeed = function () {
     return this.enemySpeed[Math.floor(Math.random() * this.enemySpeed.length)];
-}
+};
 
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function (dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -51,30 +51,30 @@ Enemy.prototype.update = function(dt) {
     if (this.x > this.maxPosX) {
         this.reset();
     }
-}
+};
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Enemy Bugs appear in a random row every time they spawn
-Enemy.prototype.randomY = function() {
+Enemy.prototype.randomY = function () {
     return this.enemyY[Math.floor(Math.random() * this.enemyY.length)];
-}
+};
 
 /* PLAYER CLASS SECTION */
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function() {
+var Player = function () {
     // Load Player sprite
     this.sprite = 'images/char-boy.png';
     // Set Player initial location
     this.reset();
-}
+};
 
-Player.prototype.update = function() {
+Player.prototype.update = function () {
     if (this.y == -20) {
         // Player reached water, call reset method
         this.reset();
@@ -93,19 +93,19 @@ Player.prototype.update = function() {
             }
         });
     }
-}
+};
 
 // Reset Player to Initial Location
-Player.prototype.reset = function() {
+Player.prototype.reset = function () {
     this.x = 200;
     this.y = 380;
-}
+};
 
-Player.prototype.render = function() {
+Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
-Player.prototype.handleInput = function(key) {
+Player.prototype.handleInput = function (key) {
     if (key === 'left' && this.x > leftBorder) {
         this.x -= tileWidth;
     } else if (key === 'up') {
@@ -115,7 +115,7 @@ Player.prototype.handleInput = function(key) {
     } else if (key === 'down' && this.y < downBorder) {
         this.y += tileHeight;
     }
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
